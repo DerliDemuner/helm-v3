@@ -40,6 +40,9 @@ service:
   type: ClusterIP
   port: 80
 
+grafana:
+  enabled: false
+  
 ingress:
   enabled: false
   className: ""

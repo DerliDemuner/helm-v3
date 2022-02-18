@@ -2,13 +2,29 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+grafana:
+  enabled: false
+  adminUser: derli
+  adminPassword: password
+
 replicaCount: 1
+
 
 image:
   repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
 
 imagePullSecrets: []
 nameOverride: ""
@@ -39,10 +55,8 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 80
+  targetPort: 80
 
-grafana:
-  enabled: false
-  
 ingress:
   enabled: false
   className: ""
@@ -70,6 +84,20 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
+
+persistence:
+  enabled: true
+  size: 1Gi
+  name: volume
+
+volumes:
+  - name: volume
+    persistentVolumeClaim:
+      claimName: volume
+
+volumeMounts:
+  - mountPath: /home/derli
+    name: volume
 
 autoscaling:
   enabled: false

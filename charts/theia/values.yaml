@@ -11,8 +11,8 @@ image:
   tag: "1.0.0-SNAPSHOT"
 
 imagePullSecrets: []
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: "theia-der'li"
+fullnameOverride: "theia-derli"
 
 configMap:
   enabled: true
@@ -37,7 +37,7 @@ configMap:
   #   port: http
 
 persistence:
-  name: "volume-theia"
+  name: "pvc-derli-theia"
   enabled: true
   accessModes:
     - ReadWriteOnce
@@ -49,9 +49,9 @@ volumes:
     defaultMode: 0777
     name: script
     optional: false
-- name: volume-theia
+- name: pvc-derli-theia
   persistentVolumeClaim:
-      claimName: volume-theia
+      claimName: pvc-derli-theia
 
 volumeMounts:
 - mountPath: /home/project/scripts

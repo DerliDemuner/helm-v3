@@ -15,7 +15,7 @@ nameOverride: "theia-derli"
 fullnameOverride: "theia-derli"
 
 configMap:
-  enabled: true
+  enabled: false
   name: script
   data: 
     listar.sh: |-

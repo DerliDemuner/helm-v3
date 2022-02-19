@@ -57,7 +57,7 @@ volumeMounts:
 - mountPath: /home/project/scripts
   name: script
 - mountPath: /home/project
-  name: volume-theia
+  name: pvc-derli-theia
 
 serviceAccount:
   # Specifies whether a service account should be created
